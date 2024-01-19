@@ -24,16 +24,20 @@ public class Child {
     @JoinColumn(name = "father_id")
     private Father father;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "mother_id")
+    private Mother mother;
+
     public Child() {
 
     }
 
-    public Child(int id, String firstName, String lastName, int age, Father father) {
-        this.id = id;
+    public Child(String firstName, String lastName, int age, Father father, Mother mother) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.father = father;
+        this.mother = mother;
     }
 
     public int getId() {
@@ -74,6 +78,14 @@ public class Child {
 
     public void setFather(Father father) {
         this.father = father;
+    }
+
+    public Mother getMother() {
+        return mother;
+    }
+
+    public void setMother(Mother mother) {
+        this.mother = mother;
     }
 
     @Override

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "father")
-public class Father {
+@Table(name = "mother")
+public class Mother {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,13 @@ public class Father {
     @Column(name = "age")
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "father")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mother")
     private List<Child> childList;
 
-    public Father() {
+    public Mother() {
     }
 
-    public Father(String firstName, String lastName, int age) {
+    public Mother(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -72,12 +72,12 @@ public class Father {
             childList = new ArrayList<>();
         }
         childList.add(child);
-        child.setFather(this);
+        child.setMother(this);
     }
 
     @Override
     public String toString() {
-        return "Husband{" +
+        return "Mother{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
