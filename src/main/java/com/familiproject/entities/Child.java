@@ -22,13 +22,13 @@ public class Child {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "father_id")
-    private Husband father;
+    private Father father;
 
     public Child() {
 
     }
 
-    public Child(int id, String firstName, String lastName, int age, Husband father) {
+    public Child(int id, String firstName, String lastName, int age, Father father) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -68,11 +68,11 @@ public class Child {
         this.age = age;
     }
 
-    public Husband getFather() {
+    public Father getFather() {
         return father;
     }
 
-    public void setFather(Husband father) {
+    public void setFather(Father father) {
         this.father = father;
     }
 
