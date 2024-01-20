@@ -23,6 +23,10 @@ public class Father {
     @Column(name = "age")
     private int age;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wife_id")
+    private Mother wife;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "father")
     private List<Child> childList;
 
@@ -66,6 +70,15 @@ public class Father {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public Mother getWife() {
+        return wife;
+    }
+
+    public void setWife(Mother wife) {
+        this.wife = wife;
+    }
+
 
     public void addChild(Child child) {
         if (childList == null) {

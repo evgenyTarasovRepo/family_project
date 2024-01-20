@@ -32,12 +32,10 @@ public class Child {
 
     }
 
-    public Child(String firstName, String lastName, int age, Father father, Mother mother) {
+    public Child(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.father = father;
-        this.mother = mother;
     }
 
     public int getId() {
