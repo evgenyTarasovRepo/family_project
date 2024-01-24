@@ -23,11 +23,11 @@ public class Mother {
     @Column(name = "age")
     private int age;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "hus_id")
     private Father husband;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mother")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.EAGER, mappedBy = "mother")
     private List<Child> childList;
 
     public Mother() {
@@ -79,12 +79,20 @@ public class Mother {
         this.husband = husband;
     }
 
+    public List<Child> getChildList() {
+        return childList;
+    }
+
     public void addChild(Child child) {
         if (childList == null) {
             childList = new ArrayList<>();
         }
         childList.add(child);
         child.setMother(this);
+    }
+
+    public void removeChild(Child c) {
+        childList.removeIf(child -> child.equals(c));
     }
 
     @Override
